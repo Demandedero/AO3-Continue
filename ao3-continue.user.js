@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AO3 Continue
 // @namespace    https://github.com/Demandedero/AO3-Continue
-// @version      2.4.0
+// @version      2.4.1
 // @description  AO3 自动记录阅读章节；作品页继续到下一章；搜索/列表页显示已读进度；单浮窗；长按导入导出；浮窗可拖动并记住位置。
 // @match        https://archiveofourown.org/*
 // @match        https://www.archiveofourown.org/*
@@ -14,8 +14,7 @@
   'use strict';
 
   const PREFIX = 'ao3_continue_progress_';
-  const POSITION_KEY = 'ao3_continue_panel_position';
-  const AUTO_JUMP = false; // 想自动跳转就改成 true
+    const AUTO_JUMP = false; // 想自动跳转就改成 true
   const LONG_PRESS_MS = 550;
   const DRAG_THRESHOLD = 8;
 
@@ -123,7 +122,6 @@
     const panel = document.createElement('div');
     panel.className = 'ao3ac-panel collapsed';
     document.body.appendChild(panel);
-    restorePanelPosition(panel);
 
     let longPressTimer = null;
     let longPressed = false;
@@ -135,7 +133,7 @@
 
     function collapsed() {
       panel.className = 'ao3ac-panel collapsed';
-      panel.innerHTML = `<button class="ao3ac-fab" title="单击进度，长按导入/导出，拖动可移动">🔖</button>`;
+      panel.innerHTML = `<button class="ao3ac-fab" title="单击进度，长按导入/导出">🔖</button>`;
       const btn = panel.querySelector('button');
 
       btn.addEventListener('pointerdown', startPress);
@@ -468,26 +466,26 @@
       }
 
       .ao3ac-panel.menu-expanded {
-        background: rgba(35,35,35,.92);
+        background: rgba(153,0,0,.58);
         color: white;
         padding: 8px;
         border-radius: 10px;
         font-size: 12px;
         line-height: 1.4;
-        box-shadow: 0 2px 10px rgba(0,0,0,.3);
+        box-shadow: 0 1px 5px rgba(0,0,0,.15);
         min-width: 130px;
         touch-action: auto;
         user-select: auto;
       }
 
       .ao3ac-panel.progress-expanded {
-        background: rgba(35,35,35,.92);
+        background: rgba(153,0,0,.58);
         color: white;
         padding: 6px 7px;
         border-radius: 9px;
         font-size: 10px;
         line-height: 1.2;
-        box-shadow: 0 2px 8px rgba(0,0,0,.28);
+        box-shadow: 0 1px 5px rgba(0,0,0,.15);
         min-width: 78px;
         text-align: center;
         touch-action: auto;
